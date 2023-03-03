@@ -50,6 +50,18 @@ public:
 		//-----------------------------
 		cout << "CopyConstructor:" << this << endl;
 	}
+
+
+	String(String&& other) //конструктор перемещения
+	{
+		this->size = other.size; // присваиваем объекту данные-члены класса из исходного объекта
+		this->str = other.str;
+		other.size = 0; //присваиваем данным-членам исходного объекта значения по умолчанию
+		other.str = nullptr; //это не позволяет деструктору многократно освобождать ресурсы(память)
+		cout << "MoveConstructor:" << this << endl;
+	}
+
+
 	~String()
 	{
 		delete[] this->str;
@@ -77,6 +89,20 @@ public:
 		cout << "CopyAssignment:\t" << this << endl;
 		return *this;
 	}
+
+	String& operator=(String&& other) //оператор присваивания
+	{
+		if (this == &other)return *this;
+		delete[] this->str;
+		this->size = other.size;
+		this->str = other.str;
+		other.size = 0;
+		other.str = nullptr;
+		cout << "MoveAssignment:\t" << this << endl; 
+		return *this;
+	}
+
+
 	String& operator+=(const String& other)
 	{
 		return *this = *this + other;
