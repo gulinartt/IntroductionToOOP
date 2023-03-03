@@ -23,16 +23,12 @@ public:
 	}
 
 	//				Contructors:
-	explicit String(int size = 80)
+	explicit String(int size = 80):size(size), str(new char[size]{})
 	{
-		this->size = size;
-		this->str = new char[size] {};
 		cout << "DefConstructor:\t" << this << endl;
 	}
-	String(const char* str)
+	String(const char* str):size(strlen(str)+1), str(new char[size]{})
 	{
-		this->size = strlen(str) + 1;//+1 для NULL-terminator
-		this->str = new char[size] {};
 		for (int i = 0; str[i]; i++)this->str[i] = str[i];
 		cout << "Constructor:\t" << this << endl;
 	}
@@ -40,11 +36,11 @@ public:
 	//other
 	//this
 	//Shallow copy (Поверхностное копирование)
-	String(const String& other)
+	String(const String& other):size(other.size),str(new char[size]{})
 	{
-		this->size = other.size;
+		//this->size = other.size;
 		//Deep copy (Побитовое копирование):
-		this->str = new char[size] {};
+		//this->str = new char[size] {};
 		for (int i = 0; i < size; i++)
 			this->str[i] = other.str[i];
 		//-----------------------------
@@ -52,10 +48,10 @@ public:
 	}
 
 
-	String(String&& other) //конструктор перемещения
+	String(String&& other):size(other.size),str(other.str) //конструктор перемещения
 	{
-		this->size = other.size; // присваиваем объекту данные-члены класса из исходного объекта
-		this->str = other.str;
+		//this->size = other.size; // присваиваем объекту данные-члены класса из исходного объекта
+		//this->str = other.str;
 		other.size = 0; //присваиваем данным-членам исходного объекта значения по умолчанию
 		other.str = nullptr; //это не позволяет деструктору многократно освобождать ресурсы(память)
 		cout << "MoveConstructor:" << this << endl;
@@ -167,6 +163,10 @@ void main()
 
 	str1 += str2;
 	cout << str1 << endl;
+
+	String str4 = str1;
+	cout << str4 << endl;
+
 #endif // HOME_WORK
 
 }
