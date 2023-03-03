@@ -4,8 +4,10 @@ using std::cin;
 using std::cout;
 using std::endl;
 
+///////////////////////////////////////////////////////////////////
+////////  объявление класса - class declaration  //////////////////
 class String;
-String operator+(const String& left, const String& right);
+String operator+(const String& left, const String& right); //Прототип оператора +
 
 class String
 {
@@ -40,6 +42,14 @@ public:
 	//				Methods:
 	void print()const;
 };
+
+///////////////////////////////////////////////////////////////////
+////////  конец объявление класса - class declaration end  ////////
+
+///----------------------------------///
+
+///////////////////////////////////////////////////////////////////
+////////  определение класса - class definition //////////////////
 
 int String::get_size()const
 {
@@ -170,6 +180,9 @@ std::ostream& operator<<(std::ostream& os, const String& obj)
 {
 	return os << obj.get_str();
 }
+
+///////////////////////////////////////////////////////////////////
+////////  конец определения класса - class definition end /////////
 
 #define HOME_WORK
 
