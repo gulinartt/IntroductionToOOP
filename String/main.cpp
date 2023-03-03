@@ -160,9 +160,9 @@ void main()
 	String str2 = "World";
 	cout << str2 << endl;
 
-	//String str3 = str1 + str2;	//Copy constructor
+	//String str3 = str1 + str2;	
 	String str3;
-	str3 = str1 + " " + str2;	//Copy assignment
+	str3 = str1 + " " + str2;	
 	cout << str3 << endl;
 
 	str1 += str2;
