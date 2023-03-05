@@ -8,6 +8,7 @@ using std::endl;
 class Fraction;
 Fraction operator*(Fraction left, Fraction right);	//Прототип фугкции - объявление функции (Function declaration)
 Fraction operator/(const Fraction& left, const Fraction& right);
+std::ostream& operator<<(std::ostream& os, const Fraction& obj);
 
 class Fraction
 {
