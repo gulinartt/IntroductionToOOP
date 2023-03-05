@@ -9,6 +9,7 @@ using std::endl;
 ///////////		ÎÁÚßÂËÅÍÈÅ ÊËÀÑÑ - CLASS DECLARATION		///////////					
 
 #define delimiter "\n-------------------------\n"
+class Point;
 Point operator+(const Point& left, const Point& right);
 
 class Point
